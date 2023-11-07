@@ -1,0 +1,4 @@
+Le premier exercice consiste à synchroniser des échanges entre deux processus en utilisant
+des sémaphores.
+Le deuxième exercice consiste en la même chose mais en utilisant des tubes.
+Le troisième exercice consiste à communiquer le résultat du processus fils au processus père en utilisant des tubes 

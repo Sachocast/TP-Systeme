@@ -1,0 +1,10 @@
+L'objectif de ce tp était de créer un shell.
+Celui-ci devait pouvoir exécuter des commandes de base.
+Le shell possède également un mécanisme de contrôle parental, toutes les commandes contenant les chaines de caractère
+stocké dans la variable d'environnement FORBIDDEN afficheront "travaille au lieu de jouer !".
+Le shell propose également des commandes internes: 
+	exit: permet de quitter le shell.
+	newf: permet d'ajouter une chaine dans FORBIDDEN.
+	rmf: permet de supprimer une chaine dans FORBIDDEN.
+
+Ctrl-c a était désactivé
