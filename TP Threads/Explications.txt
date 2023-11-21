@@ -1,4 +1,8 @@
-Le premier exercice consiste à synchroniser des échanges entre deux processus en utilisant
-des sémaphores.
-Le deuxième exercice consiste en la même chose mais en utilisant des tubes.
-Le troisième exercice consiste à communiquer le résultat du processus fils au processus père en utilisant des tubes 
+Le but de ce TP étais de simuler le fonctionnement d'une usine, d'une entreprise et
+de 3 concessions de voiture. Ils tournent tous sur des threads différents et se partagent
+une variable appelée stock.
+
+
+
+Pour compiler placer dans le dossier TP Threads et entrez la commande : make
+puis pour exécuter le programme : ./main
