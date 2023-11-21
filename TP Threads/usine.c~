@@ -1,0 +1,36 @@
+/*
+  Fichier : usine.c
+  Version 0
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <unistd.h>
+
+#define INTERVALLE_PRODUCTION 1
+
+void *activite_usine(void *arg){
+  /* 
+     routine de l'activité d'une usine 
+  */
+  while(1){
+    printf("Production ");
+    sleep(INTERVALLE_PRODUCTION);
+    printf("d'une voiture");	
+  }
+}
+
+int creation_usine(pthread_t *t){
+  /* Creation de l'usine en tant que thread 
+   => le paramètre t est modifié (si le thread est créé) 
+   => on rend le code de retour de la creation
+  */
+  
+  void *arg = NULL; // argument de la routine du thread
+  
+  return pthread_create(t,
+			NULL,
+			activite_usine, // routine associée au thread "=" son code
+			arg);   // argument de la routine activite_usine
+                                  // pour l'instant YENAPAS
+}
