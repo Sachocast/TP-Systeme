@@ -1,5 +1,3 @@
-/*--------------------------------
-    Header File entrepot.h */
 #ifndef ENTREPOTH
 #define ENTREPOTH
 #include <pthread.h>
@@ -8,7 +6,6 @@
 #define CAPACITE_ENTREPOT 100
 #define INTERVALLE_INVENTAIRE 1
 
-/* Argument de la creation d’une entrepot */
 typedef struct argofentrepot{ 
     int numero; 
     float *stock;

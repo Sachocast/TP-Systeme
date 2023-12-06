@@ -1,5 +1,3 @@
-/*--------------------------------
-    Header File concession.h */
 #ifndef CONCESSIONH
 #define CONCESSIONH
 #include <pthread.h>
@@ -8,7 +6,6 @@
 #define CAPACITE_CONCESSION 10
 #define INTERVALLE_VENTE 1
 
-/* Argument de la creation d’une concession */
 typedef struct argofconcession{ 
     int numero; 
     float *stock;  

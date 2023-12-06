@@ -1,5 +1,3 @@
-/*--------------------------------
-    Src2 File concession.c */
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -30,7 +28,6 @@ void *activite_entrepot(void *arg){
 }
 
 int creation_entrepot(pthread_t *t, void *arg){
-    /* Creation de la concession */
 
     aofe *entrepot_args = (aofe *)arg;
 

@@ -10,7 +10,6 @@
 #define WRITE_END 1
 
 void make_message ( int num , char *message ){
-    /* Rem pl i t l e b u f f e r ” message ” */
     char buftime[26] ;
     time_t timer;
     struct tm* tm_info;
@@ -21,8 +20,7 @@ void make_message ( int num , char *message ){
 }
 
 int main(int argc, char *argv[]){
-  /* CREATION DU pipe -------------------------*/
-  int fd[2]; /* => deux extremites : lire/´ecrire */
+  int fd[2];
   int fd2[2];
   if (pipe(fd) == -1 || pipe(fd2) == -1){
     fprintf(stderr,"Pipe failed");
@@ -30,23 +28,20 @@ int main(int argc, char *argv[]){
   }
   char msg[BUFFER_SIZE];
 
-  /* fork a child process */
   pid_t pid;
   pid = fork();
-  if (pid < 0) { /* error occurred */
+  if (pid < 0) { 
     fprintf(stderr, "Fork Failed"); return 1;
   }
 
-  if (pid > 0) { /* parent process : WRITE */
+  if (pid > 0) { 
     int status;
    
     printf("\nChild 1 executing...\n");
-    /* close the unused end of the pipe */
     close(fd[READ_END]);
     close(fd2[WRITE_END]);
     
     while(1){
-        /* write to the pipe */
         make_message(1,msg);
         write(fd[WRITE_END], msg, strlen(msg)+1);
         fflush(stdout);
@@ -58,19 +53,17 @@ int main(int argc, char *argv[]){
     }
     close(fd[WRITE_END]);
     close(fd2[READ_END]);
-    wait(&status); /* Eviter le zombie ! */
+    wait(&status);
     printf("\nParent finishing.\n");
   }
 
-  else { /* child process : READ */
+  else { 
 
     printf("\n\nChild 2 executing...\n");
-    /* close the unused end of the pipe */
     close(fd[WRITE_END]);
     close(fd2[READ_END]);
 
     while(1){
-        /* read from the pipe */
         read(fd[READ_END], msg, BUFFER_SIZE);
         printf("Message received by child 2 %s",msg);
         fflush(stdout);

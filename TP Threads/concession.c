@@ -1,5 +1,3 @@
-/*--------------------------------
-    Src2 File concession.c */
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -39,7 +37,6 @@ void *activite_concession(void *arg){
     }
 }
 int creation_concession(pthread_t *t, void *arg){
-    /* Creation de la concession */
     return pthread_create(t,
                             NULL,
                             activite_concession,

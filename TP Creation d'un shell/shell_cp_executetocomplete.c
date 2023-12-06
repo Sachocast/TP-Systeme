@@ -14,7 +14,7 @@
 
 char *sh_read_line(FILE *f){
   char *line = NULL;
-  size_t bufsize = 0; // donc getline realise l'allocation
+  size_t bufsize = 0; 
   getline(&line, &bufsize, f);
   return line;
 }
@@ -54,15 +54,6 @@ char ** sh_split_line( char *line){
 }
 
 /*---------------------------------------------*/
-
-/*
-void cmdExit(int pidPere){
-    if(getpid() == pidPere){ 
-      printf("commande(s) interdite(s) entrée(s): %d\n",cpt);
-    }
-    fflush(stdout);
-    kill(0,SIGTERM);
-}*/
 
 int newF(const char *token) {
     char *forbidden = getenv("FORBIDDEN");
@@ -124,7 +115,6 @@ int isForbidden(char **args) {
 /*---------------------------------------------*/
 
 int sh_execute(char **args){
-  /* To complete !! */ 
   int verif = 0; 
   if(args[0] != NULL){
     if (strcmp(args[0], "exit") == 0) {
@@ -196,8 +186,6 @@ void sh_loop(void){
     line = sh_read_line(stdin);
     args = sh_split_line(line); 
     status = sh_execute(args);
-    /*sh_free(line); */
-    /*sh_free(args); */
   } while(status);  
 }
 
@@ -205,13 +193,8 @@ void sh_loop(void){
 
 int main(int argc, char * argv[]){
 
-  // Init : Load config files, if any
-
-  // Interp : Run Command loop
   sh_loop();
-  
-  // Termin : Perform any shutdown / cleanup
-  
+    
   return EXIT_SUCCESS;
 }
 

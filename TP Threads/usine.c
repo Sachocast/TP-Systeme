@@ -1,7 +1,3 @@
-/*
-  Fichier : usine.c
-  Version 2
- */
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -33,15 +29,9 @@ void *activite_usine(void *arg){
 }
 
 int creation_usine(pthread_t *t,void *arg){
-  /* Creation de l'usine en tant que thread 
-   => le paramètre t est modifié (si le thread est créé) 
-   => on rend le code de retour de la creation
-  */
-  
-    
+
   return pthread_create(t,
 			NULL,
-			activite_usine, // routine associée au thread "=" son code
-			arg);   // argument de la routine activite_usine
-                                  // pour l'instant YENAPAS
+			activite_usine, 
+			arg);   
 }

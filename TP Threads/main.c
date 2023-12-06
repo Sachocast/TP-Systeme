@@ -1,7 +1,3 @@
-/*
-  Fichier : main.c 
-  Version 0
- */
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -15,7 +11,6 @@ int creation_entrepot(pthread_t *t, void *arg);
 
 
 #define NB_CONCESSION 3
-/*------------------------------------------*/
 int main(int argc, char*argv[]){
   float stock = 0.0;
   float stockConcess[NB_CONCESSION];
@@ -34,16 +29,12 @@ int main(int argc, char*argv[]){
   for (int i = 0; i < NB_CONCESSION; i++) {
     stockConcess[i] = 0;
   }   
-  int r = 1; /* report value */
+  int r = 1; 
   int i;
-  /* Modele d’un entrepot */
   pthread_t entrepot;
-  /* Modele des concessions */
   pthread_t concession[NB_CONCESSION];
-  /* Modele d’une usine */
   pthread_t usine;
 
-  /* create threads of the simulation */
   aofu *u = malloc(sizeof(aofu));
   u->stock = &stock;
   u->mutexStock = &mutexStock;
@@ -71,19 +62,16 @@ int main(int argc, char*argv[]){
     p->condConcess1 = &condConcess1;
     p->condConcess2 = &condConcess2;
     p->condUsine = &condUsine;
-    /* A sa creation la concession connait son numero ! */
     r = creation_concession(&(concession[i]), (void *) p);
     if (r != 0){
       fprintf(stderr,"Concession echec !");
       free(p);
     }
   }
-  /* block until all threads complete */
   pthread_join(usine,NULL);
   pthread_join(entrepot,NULL);
   for (i=0; i<NB_CONCESSION ; i++){
     pthread_join(concession[i],NULL);
-    /* il aurait aussi fallu liberer des choses du tas ... */
   }
   pthread_mutex_destroy(&mutexStock);
   return 0;
